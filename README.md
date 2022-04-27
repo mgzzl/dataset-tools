@@ -4,7 +4,7 @@ Tools for quickly normalizing image datasets for machine learning. I maintain a 
 ## Installation
 Note: If you’re installing this on a Mac, I highly recommend installing it alongside Anaconda. A video tutorial is available [here](https://www.youtube.com/watch?v=2zgki1oeRkg).
 ```
-git clone https://github.com/dvschultz/dataset-tools.git
+git clone https://github.com/mgzzl/dataset-tools.git
 cd dataset-tools
 pip install -r requirements.txt
 ```
