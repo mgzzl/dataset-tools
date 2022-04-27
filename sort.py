@@ -25,7 +25,7 @@ def parse_args():
 		help='Directory path to the outputs folder. (default: %(default)s)')
 
 	parser.add_argument('-p','--process_type', type=str,
-		default='exclude',
+		default='sort',
 		help='Process to use. ["exclude","sort","tagsort","lpips","channels"] (default: %(default)s)')
 
 	parser.add_argument('--max_size', type=int, 
@@ -74,7 +74,7 @@ def saveImage(img,path,filename):
         cv2.imwrite(os.path.join(path, new_file), img, [cv2.IMWRITE_JPEG_QUALITY, 90])
 
 def exclude(img,filename):
-	make_path = args.output_folder + "exclude_"+str(args.min_size)+"-"+str(args.max_size)+"/"
+	make_path = args.output_folder + "_exclude_"+str(args.min_size)+"-"+str(args.max_size)+"/"
 	if not os.path.exists(make_path):
 		os.makedirs(make_path)
 
@@ -111,8 +111,8 @@ def gray_color(img,filename):
 		saveImage(img,gray_path,filename)
 
 def sort(img,filename):
-	make_path1 = args.output_folder + "yes/"
-	make_path2 = args.output_folder + "no/"
+	make_path1 = args.output_folder + "_keep/"
+	make_path2 = args.output_folder + "_excluded/"
 	if not os.path.exists(make_path1):
 		os.makedirs(make_path1)
 	if not os.path.exists(make_path2):
