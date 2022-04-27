@@ -168,9 +168,14 @@ def main():
 			if(args.verbose): print('\t- subdirectory ' + subdir)
 
 		for filename in files:
-			file_path = os.path.join(root, filename)
-			to_load.append(file_path)
-			filenames.append(filename)
+			img = cv2.imread(os.path.join(root, filename))
+			if img is not None:
+				print(filename + " is a readable image")
+				file_path = os.path.join(root, filename)
+				to_load.append(file_path)
+				filenames.append(filename)
+			else:
+				print(filename + " is not a readable image. It will be ignored!")
 
 	loaded_images = load_images_multi_thread(to_load, args.j__jobs, args.verbose)
 	assert len(loaded_images) == len(to_load) == len(filenames)
